@@ -5,15 +5,20 @@ const cors = require('cors');
 const { open } = require('sqlite');
 const sqlite3 = require('sqlite3').verbose();
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 const port = 3010;
 
+//const dbPath = resolve(__dirname, "./BD4_Assignment1/database.sqlite");
+// console.log("dbPath", dbPath)
+
+
 let db;
 (async () => {
   db = await open({
-    filename: './BD4_Assignment1/database.sqlite',
+    filename: resolve(__dirname, "./BD4_Assignment1/database.sqlite"),
     driver: sqlite3.Database,
   });
 })();
